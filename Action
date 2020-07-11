@@ -1,0 +1,16 @@
+import os
+from twilio.rest import Client
+
+account_sid = os.environ['ACdf33f4ba6cb9eb4e724f7e582bb3c32e']
+auth_token = os.environ['27e67ce39e23a7a1cf1446897ff89ddb']
+to_whatsapp_no = os.environ['8638167619']
+
+client = Client(account_sid, auth_token)
+
+message = client.messages.create(
+                              body='Yay! Push event triggered in master branch',
+                              from_='whatsapp:+14155238886',
+                              to='whatsapp:'+to_whatsapp_no
+                          )
+
+print("Message ID:",message.sid)
